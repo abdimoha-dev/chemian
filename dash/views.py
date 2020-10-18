@@ -18,3 +18,8 @@ def mails(request):
         
     return render(request,'index.html')
         
+def admin_page(request):
+    return render(request,'admin_index.html')
+
+def update(request):
+    return render(request,'updates.html')
