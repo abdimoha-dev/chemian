@@ -10,6 +10,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 
     <link rel="stylesheet" href="{% static 'css/open-iconic-bootstrap.min.css' %}">
     <link rel="stylesheet" href="{% static 'css/animate.css' %}">
@@ -59,7 +61,7 @@
     <!-- END nav -->
     
     
-    <div class="hero-wrap" style="background-image: url('images/bg_1.jpg'); background-attachment:fixed;">
+    <div class="hero-wrap" style="background-image: url({% static 'images/bg_1.jpg'%}); background-attachment:fixed;">
       <div class="overlay"></div>
       <div class="container">
         <div class="row no-gutters slider-text align-items-center justify-content-center" data-scrollax-parent="true">
@@ -114,59 +116,13 @@
                 <button type="button" class="btn btn-primary btn-md" data-toggle="modal" data-target="#modalBookNowLabel" id="myBtn">Book Online Appointment</button>
               </div>
               {% endfor %}
-              
-              <!-- <div class="tab-pane fade py-5" id="v-pills-hbc" role="tabpanel" aria-labelledby="v-pills-buffet-tab">
-                <span class="icon mb-3 d-block flaticon-neurology"></span>
-                <h2 class="mb-4 btn">Home Based Care</h2>
-                <p>Diabetic care, Hypertension, Would care management, Nutritional care, Palliative, Referral link services.</p>
-                <button type="button" class="btn btn-primary btn-md" data-toggle="modal" data-target="#modalBookNowLabel" id="myBtn">Book Now</button>
-              </div>
-
-              <div class="tab-pane fade py-5" id="v-pills-fitness" role="tabpanel" aria-labelledby="v-pills-fitness-tab">
-                <span class="icon mb-3 d-block flaticon-stethoscope"></span>
-                <h2 class="mb-4 btn">Diagnostic Department</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt voluptate, quibusdam sunt iste dolores consequatur</p>
-                <p>Inventore fugit error iure nisi reiciendis fugiat illo pariatur quam sequi quod iusto facilis officiis nobis sit quis molestias asperiores rem, blanditiis! Commodi exercitationem vitae deserunt qui nihil ea, tempore et quam natus quaerat doloremque.</p>
-                <button type="button" class="btn btn-primary btn-md" data-toggle="modal" data-target="#modalBookNowLabel" id="myBtn">Book Now</button>
-              </div> -->
-<!-- 
-              <div class="tab-pane fade py-5" id="v-pills-reception" role="tabpanel" aria-labelledby="v-pills-reception-tab">
-                <span class="icon mb-3 d-block flaticon-tooth"></span>
-                <h2 class="mb-4 btn">Dental Departments</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt voluptate, quibusdam sunt iste dolores consequatur</p>
-                <p>Inventore fugit error iure nisi reiciendis fugiat illo pariatur quam sequi quod iusto facilis officiis nobis sit quis molestias asperiores rem, blanditiis! Commodi exercitationem vitae deserunt qui nihil ea, tempore et quam natus quaerat doloremque.</p>
-                <button type="button" class="btn btn-primary btn-md" data-toggle="modal" data-target="#modalBookNowLabel" id="myBtn">Book Now</button>
-              </div>
-
-              <div class="tab-pane fade py-5" id="v-pills-sea" role="tabpanel" aria-labelledby="v-pills-sea-tab">
-                <span class="icon mb-3 d-block flaticon-vision"></span>
-                <h2 class="mb-4">Ophthalmology Departments</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt voluptate, quibusdam sunt iste dolores consequatur</p>
-                <p>Inventore fugit error iure nisi reiciendis fugiat illo pariatur quam sequi quod iusto facilis officiis nobis sit quis molestias asperiores rem, blanditiis! Commodi exercitationem vitae deserunt qui nihil ea, tempore et quam natus quaerat doloremque.</p>
-                <button type="button" class="btn btn-primary btn-md" data-toggle="modal" data-target="#modalBookNowLabel" id="myBtn">Book Now</button>
-              </div>
-
-              <div class="tab-pane fade py-5" id="v-pills-spa" role="tabpanel" aria-labelledby="v-pills-spa-tab">
-                <span class="icon mb-3 d-block flaticon-ambulance"></span>
-                <h2 class="mb-4 btn">Emergency Departments</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt voluptate, quibusdam sunt iste dolores consequatur</p>
-                <p>Inventore fugit error iure nisi reiciendis fugiat illo pariatur quam sequi quod iusto facilis officiis nobis sit quis molestias asperiores rem, blanditiis! Commodi exercitationem vitae deserunt qui nihil ea, tempore et quam natus quaerat doloremque.</p>
-                <button type="button" class="btn btn-primary btn-md" data-toggle="modal" data-target="#modalBookNowLabel" id="myBtn">Book Now</button>
-              </div>
-              <div class="tab-pane fade py-5" id="v-pills-spa" role="tabpanel" aria-labelledby="v-pills-spa-tab">
-                <span class="icon mb-3 d-block flaticon-ambulance"></span>
-                <h2 class="mb-4 btn">Emergency Departments</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt voluptate, quibusdam sunt iste dolores consequatur</p>
-                <p>Inventore fugit error iure nisi reiciendis fugiat illo pariatur quam sequi quod iusto facilis officiis nobis sit quis molestias asperiores rem, blanditiis! Commodi exercitationem vitae deserunt qui nihil ea, tempore et quam natus quaerat doloremque.</p>
-                <button type="button" class="btn btn-primary btn-md" data-toggle="modal" data-target="#modalBookNowLabel" id="myBtn">Book Now</button>
-              </div> -->
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="ftco-section-2 img" style="background-image: url(images/bg_3.jpg);" id="services">
+    <section class="ftco-section-2 img" style="background-image: url({% static 'images/bg_3.jpg' %});" id="services">
     	<div class="container">
     		<div class="row d-md-flex justify-content-end">
     			<div class="col-md-3">
@@ -223,9 +179,9 @@
         	<div class="col-md-6 col-lg-3 ftco-animate">
 	          <div class="block-2">
 	            <div class="flipper">
-                <img src="{{doctor.doctor_photo}}" alt="image" class="img-responsive    center-block post_img" />
+                <!-- images/bg_3.jpg -->
 
-	              <!-- <div class="front" style="background-image: url({{doctor.doctor_photo}});"> -->
+	              <div class="front" style="background-image: url({{doctor.doctor_photo.url}});">
 	                <div class="box">
 	                  <h2>{{doctor.doctor_name}}</h2>
 	                  <p>{{doctor.doctor_specialization}}</p>
@@ -238,9 +194,8 @@
 	                </blockquote>
 	                <div class="author d-flex">
 	                  <div class="image mr-3 align-self-center">
-                      <img src="{{doctor.doctor_photo}}" alt="image" class="img-responsive    center-block post_img" />
 
-	                    <!-- <div class="img" style="background-image: url(images/{{doctor.doctor_details}});"></div> -->
+	                    <div class="img" style="background-image: url(images/{{doctor.doctor_details}});"></div>
 	                  </div>
 	                  <div class="name align-self-center">{{doctor.doctor_name}} <span class="position">{{doctor.doctor_specialization}}</span></div>
 	                </div>
@@ -412,9 +367,9 @@
               <h2 class="ftco-heading-2">Chemian Health</h2>
               <p >As a unique and innovative plan to offer healthcare solutions to our clients, Chemian Health Solutions has its operations in Nairobi and its environs where we intend to bring healthcare services closer to our clients and in a way it suite their needs.</p>
               <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-5">
-                <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
-                <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
-                <li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
+              
+                <a href="#" class="fa fa-facebook"></a>
+                <a href="#" class="fa fa-twitter"></a>
               </ul>
             </div>
           </div>

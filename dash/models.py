@@ -6,7 +6,7 @@ class Title(models.Model):
     
     main_title = models.CharField(max_length=50)
     main_body = models.CharField(max_length=500)
-    main_image = models.ImageField(upload_to ='dash/images', null=True)
+    main_image = models.ImageField(upload_to ='images', null=True)
     
 class About(models.Model):
     def __str__(self):
@@ -23,4 +23,4 @@ class Doctor(models.Model):
     doctor_name = models.CharField(max_length=50, null=True)
     doctor_specialization = models.CharField(max_length=50, null=True)
     doctor_details = models.CharField(max_length=500, null=True)
-    doctor_photo = models.ImageField(upload_to ='images', null=True)
+    doctor_photo = models.ImageField(upload_to ="images", null=True)
