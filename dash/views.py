@@ -3,8 +3,8 @@ from dashboard.settings import EMAIL_HOST_USER
 from django.core.mail import send_mail
 from .models import Title, About,Service, Doctor, Doctor
 
-def login(request):
-    return render(request,'login.html')
+# def login(request):
+#     return render(request,'login.html')
     
 def index(request):
     main_title = Title.objects.latest('id')
