@@ -51,7 +51,7 @@
           <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#testimonials">Testimonials</a></li>
 
           <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#contact">Contact</a></li>
-          <li class="nav-item cta"><a href="#" class="nav-link" data-toggle="modal" data-target="#modalAppointment"><span>Make an Appointment</span></a></li>
+          <li class="nav-item cta"><a href="#" class="nav-link" data-toggle="modal" data-target="#modalAppointment"><span>Make A Physical Appointment</span></a></li>
         </ul>
       </div>
     </div>
@@ -64,8 +64,10 @@
       <div class="container">
         <div class="row no-gutters slider-text align-items-center justify-content-center" data-scrollax-parent="true">
           <div class="col-md-8 ftco-animate text-center">
-            <h1 class="mb-4">The most valuable thing is your Health</h1>
-            <p>We care about your health Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life</p>
+            <h1 class="mb-4">{{main_title.main_title}}</h1> 
+            <!-- The most valuable thing is your Health -->
+            <p>{{main_title.main_body}}</p>
+            <!-- We care about your health Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life -->
           </div>
         </div>
       </div>
@@ -84,7 +86,7 @@
 
               <div class="row">
                 <div style="text-align: center;">
-                  <h4>We are well experienced doctors</h4>
+                  <h4>{{main_about.about_title}}</h4>
                   <p>As a unique and innovative plan to offer healthcare solutions to our clients, Chemian Health Solutions has its operations 
                     in Nairobi and its environs where we intend to bring healthcare services closer to our clients and in a way it suite their needs. We intend to offer online and physical medical consultations and treatment, home-based care and visits, offer laboratory services, and also help in linking our clients to referral laboratory services.
                     We have qualified medical professionals who are dedicated to offering the best care service as per the need of our clients.</p>
@@ -94,33 +96,26 @@
           </section>
           <div class="col-md-4 ftco-animate py-5 nav-link-wrap">
             <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-              <a class="nav-link px-4 active" id="v-pills-master-tab" data-toggle="pill" href="#v-pills-master" role="tab" aria-controls="v-pills-master" aria-selected="true"><span class="mr-3 flaticon-cardiogram"></span> Medical consultation</a>
-
-              <a class="nav-link px-4" id="v-pills-master-tab" data-toggle="pill" href="#v-pills-hbc" role="tab" aria-controls="v-pills-hbc" aria-selected="true"><span class="mr-3 flaticon-cardiogram"></span> home based Care</a>
-
-              <a class="nav-link px-4" id="v-pills-buffet-tab" data-toggle="pill" href="#v-pills-buffet" role="tab" aria-controls="v-pills-buffet" aria-selected="false"><span class="mr-3 flaticon-neurology"></span> Laboratory Services</a>
-
-              <a class="nav-link px-4" id="v-pills-fitness-tab" data-toggle="pill" href="#v-pills-fitness" role="tab" aria-controls="v-pills-fitness" aria-selected="false"><span class="mr-3 flaticon-stethoscope"></span> Diagnostic</a>
-
-              <a class="nav-link px-4" id="v-pills-reception-tab" data-toggle="pill" href="#v-pills-reception" role="tab" aria-controls="v-pills-reception" aria-selected="false"><span class="mr-3 flaticon-tooth"></span> Dental</a>
-
-              <a class="nav-link px-4" id="v-pills-sea-tab" data-toggle="pill" href="#v-pills-sea" role="tab" aria-controls="v-pills-sea" aria-selected="false"><span class="mr-3 flaticon-vision"></span> Ophthalmology</a>
-
-              <a class="nav-link px-4" id="v-pills-spa-tab" data-toggle="pill" href="#v-pills-spa" role="tab" aria-controls="v-pills-spa" aria-selected="false"><span class="mr-3 flaticon-ambulance"></span> Emergency</a>
-            </div>
+              {% for service in services %}
+              <a class="nav-link px-4 active" id="v-pills-master-tab" data-toggle="pill" href="#v-pills-master" role="tab" aria-controls="v-pills-master" aria-selected="true"><span class="mr-3 flaticon-cardiogram"></span> {{service.service_title}}</a>
+              {% endfor %}
+             </div>
           </div>
           <div class="col-md-8 ftco-animate d-flex align-items-center">
             
             <div class="tab-content pl-md-5" id="v-pills-tabContent">
+              {% for service in services %}
 
               <div class="tab-pane fade show active py-5" id="v-pills-master" role="tabpanel" aria-labelledby="v-pills-master-tab">
-                <span class="icon d-block flaticon-cardiogram"></span>
-                <h2 class="mb-4 btn" > Medical Consultation </h2>
+                <h2 class="mb-4 btn" > {{service.service_title}} </h2>
                 
-                <p>We offer consultation on Communicable and Non-Communicable diseases. We give you a platform to consult on any ailment of interest to you. Its our duty and responsibility to offer truthful and most current information about the condition and its management. Feel free to ask any Question that may be of interest to you</p>
-                <button type="button" class="btn btn-primary btn-md" data-toggle="modal" data-target="#modalBookNowLabel" id="myBtn">Book Now</button>
+                <p>{{service.service_description}}</p>
+                <!-- We offer consultation on Communicable and Non-Communicable diseases. We give you a platform to consult on any ailment of interest to you. Its our duty and responsibility to offer truthful and most current information about the condition and its management. Feel free to ask any Question that may be of interest to you -->
+                <button type="button" class="btn btn-primary btn-md" data-toggle="modal" data-target="#modalBookNowLabel" id="myBtn">Book Online Appointment</button>
               </div>
-              <div class="tab-pane fade py-5" id="v-pills-hbc" role="tabpanel" aria-labelledby="v-pills-buffet-tab">
+              {% endfor %}
+              
+              <!-- <div class="tab-pane fade py-5" id="v-pills-hbc" role="tabpanel" aria-labelledby="v-pills-buffet-tab">
                 <span class="icon mb-3 d-block flaticon-neurology"></span>
                 <h2 class="mb-4 btn">Home Based Care</h2>
                 <p>Diabetic care, Hypertension, Would care management, Nutritional care, Palliative, Referral link services.</p>
@@ -133,8 +128,8 @@
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt voluptate, quibusdam sunt iste dolores consequatur</p>
                 <p>Inventore fugit error iure nisi reiciendis fugiat illo pariatur quam sequi quod iusto facilis officiis nobis sit quis molestias asperiores rem, blanditiis! Commodi exercitationem vitae deserunt qui nihil ea, tempore et quam natus quaerat doloremque.</p>
                 <button type="button" class="btn btn-primary btn-md" data-toggle="modal" data-target="#modalBookNowLabel" id="myBtn">Book Now</button>
-              </div>
-
+              </div> -->
+<!-- 
               <div class="tab-pane fade py-5" id="v-pills-reception" role="tabpanel" aria-labelledby="v-pills-reception-tab">
                 <span class="icon mb-3 d-block flaticon-tooth"></span>
                 <h2 class="mb-4 btn">Dental Departments</h2>
@@ -164,7 +159,7 @@
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt voluptate, quibusdam sunt iste dolores consequatur</p>
                 <p>Inventore fugit error iure nisi reiciendis fugiat illo pariatur quam sequi quod iusto facilis officiis nobis sit quis molestias asperiores rem, blanditiis! Commodi exercitationem vitae deserunt qui nihil ea, tempore et quam natus quaerat doloremque.</p>
                 <button type="button" class="btn btn-primary btn-md" data-toggle="modal" data-target="#modalBookNowLabel" id="myBtn">Book Now</button>
-              </div>
+              </div> -->
             </div>
           </div>
         </div>
@@ -224,102 +219,38 @@
           </div>
         </div>
         <div class="row">
+          {% for doctor in doctors %}
         	<div class="col-md-6 col-lg-3 ftco-animate">
 	          <div class="block-2">
 	            <div class="flipper">
-	              <div class="front" style="background-image: url(images/doctor-1.jpg);">
+                <img src="{{doctor.doctor_photo}}" alt="image" class="img-responsive    center-block post_img" />
+
+	              <!-- <div class="front" style="background-image: url({{doctor.doctor_photo}});"> -->
 	                <div class="box">
-	                  <h2>Aldin Powell</h2>
-	                  <p>Neurologist</p>
+	                  <h2>{{doctor.doctor_name}}</h2>
+	                  <p>{{doctor.doctor_specialization}}</p>
 	                </div>
 	              </div>
 	              <div class="back">
 	                <!-- back content -->
 	                <blockquote>
-	                  <p>&ldquo;Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind text by the name of Lorem&rdquo;</p>
+	                  <p>&ldquo;{{doctor.doctor_details}}&rdquo;</p>
 	                </blockquote>
 	                <div class="author d-flex">
 	                  <div class="image mr-3 align-self-center">
-	                    <div class="img" style="background-image: url(images/doctor-1.jpg);"></div>
+                      <img src="{{doctor.doctor_photo}}" alt="image" class="img-responsive    center-block post_img" />
+
+	                    <!-- <div class="img" style="background-image: url(images/{{doctor.doctor_details}});"></div> -->
 	                  </div>
-	                  <div class="name align-self-center">Aldin Powell <span class="position">Neurologist</span></div>
+	                  <div class="name align-self-center">{{doctor.doctor_name}} <span class="position">{{doctor.doctor_specialization}}</span></div>
 	                </div>
 	              </div>
 	            </div>
 	          </div> <!-- .flip-container -->
-	        </div>
-	        <div class="col-md-6 col-lg-3 ftco-animate">
-	          <div class="block-2">
-	            <div class="flipper">
-	              <div class="front" style="background-image: url(images/doctor-2.jpg);">
-	                <div class="box">
-	                  <h2>Aldin Powell</h2>
-	                  <p>Pediatrician</p>
-	                </div>
-	              </div>
-	              <div class="back">
-	                <!-- back content -->
-	                <blockquote>
-	                  <p>&ldquo;Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind text by the name of Lorem&rdquo;</p>
-	                </blockquote>
-	                <div class="author d-flex">
-	                  <div class="image mr-3 align-self-center">
-	                    <div class="img" style="background-image: url(images/doctor-2.jpg);"></div>
-	                  </div>
-	                  <div class="name align-self-center">Aldin Powell <span class="position">Pediatrician</span></div>
-	                </div>
-	              </div>
-	            </div>
-	          </div> <!-- .flip-container -->
-	        </div>
-	        <div class="col-md-6 col-lg-3 ftco-animate">
-	          <div class="block-2">
-	            <div class="flipper">
-	              <div class="front" style="background-image: url(images/doctor-3.jpg);">
-	                <div class="box">
-	                  <h2>Aldin Powell</h2>
-	                  <p>Ophthalmologist</p>
-	                </div>
-	              </div>
-	              <div class="back">
-	                <!-- back content -->
-	                <blockquote>
-	                  <p>&ldquo;Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind text by the name of Lorem&rdquo;</p>
-	                </blockquote>
-	                <div class="author d-flex">
-	                  <div class="image mr-3 align-self-center">
-	                    <div class="img" style="background-image: url(images/doctor-3.jpg);"></div>
-	                  </div>
-	                  <div class="name align-self-center">Aldin Powell <span class="position">Ophthalmologist</span></div>
-	                </div>
-	              </div>
-	            </div>
-	          </div> <!-- .flip-container -->
-	        </div>
-	        <div class="col-md-6 col-lg-3 ftco-animate">
-	          <div class="block-2">
-	            <div class="flipper">
-	              <div class="front" style="background-image: url(images/doctor-4.jpg);">
-	                <div class="box">
-	                  <h2>Aldin Powell</h2>
-	                  <p>Pulmonologist</p>
-	                </div>
-	              </div>
-	              <div class="back">
-	                <!-- back content -->
-	                <blockquote>
-	                  <p>&ldquo;Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind text by the name of Lorem&rdquo;</p>
-	                </blockquote>
-	                <div class="author d-flex">
-	                  <div class="image mr-3 align-self-center">
-	                    <div class="img" style="background-image: url(images/doctor-4.jpg);"></div>
-	                  </div>
-	                  <div class="name align-self-center">Aldin Powell <span class="position">Pulmonologist</span></div>
-	                </div>
-	              </div>
-	            </div>
-	          </div> <!-- .flip-container -->
-	        </div>
+          </div>
+          {% endfor %}
+
+          
         </div>
         <div class="row">
         	<div class="col-md-9 ftco-animate">
