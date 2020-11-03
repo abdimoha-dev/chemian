@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from dashboard.settings import EMAIL_HOST_USER
 from django.core.mail import send_mail
-from .models import Title, About,Service, Doctor, Doctor, P_Appointment
+from .models import Title, About,Service, Doctor, Doctor, P_Appointment,Online_appointments
 
 # def login(request):
 #     return render(request,'login.html')
@@ -24,25 +24,28 @@ def index(request):
     return render(request,'index.html', context)
 
 def book_consultation(request):
-        # if request.method == 'POST':
-    # full_name = request.POST.get('full_name')
-    # email = request.POST.get('email')
-    # title = request.POST.get('title')
-    # details = request.POST.get('details')
-    
-    # appt = Online_appointments(full_name=full_name,email=email,title=title,details=details)
-    # appt.save()
-    # if request.method == 'POST':
-    subject = "welcome to emails"
-    message = "Testing This Email"
-    recepient = 'abdymohammed@gmail.com'
-    send_mail(subject,
-                message, 
-                'chemianhealth@gmail.com',
-                [recepient],
-                fail_silently= False)
+    if request.method == 'POST':
+        full_name = request.POST.get('full_name')
+        email = request.POST.get('email')
+        title = request.POST.get('title')
+        details = request.POST.get('details')
         
-    return render(request,'index.html')
+        appt = Online_appointments(full_name=full_name,email=email,title=title,details=details)
+        appt.save()
+    # if request.method == 'POST':
+        subject = "welcome to emails"
+        message = "Testing This Email"
+        recepient = 'abdymohammed@gmail.com'
+        send_mail(subject,
+                    message, 
+                    'chemianhealth@gmail.com',
+                    [recepient],
+                    fail_silently= False)
+        
+        return index(request)
+    else:
+        return index(request)
+        
 @login_required(login_url='/accounts/login/')      
 def admin_page(request):
     current_user = request.user
