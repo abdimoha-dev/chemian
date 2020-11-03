@@ -1,4 +1,6 @@
 from django.db import models
+import datetime
+
 
 class Title(models.Model):
     def __str__(self):
@@ -24,3 +26,16 @@ class Doctor(models.Model):
     doctor_specialization = models.CharField(max_length=50, null=True)
     doctor_details = models.CharField(max_length=500, null=True)
     doctor_photo = models.ImageField(upload_to ="images", null=True)
+    
+class P_Appointment(models.Model):
+    full_name = models.CharField(max_length=50, null=True)
+    email = models.CharField(max_length=50, null=True)
+    date = models.DateField(auto_now=True)
+    time = models.TimeField(auto_now=True)
+    message = models.CharField(max_length=50, null=True)
+   
+class Online_appointments(models.Model):
+    full_name = models.CharField(max_length=50, null=True)
+    email = models.CharField(max_length=50, null=True)
+    title = models.CharField(max_length=50, null=True)
+    details =models.CharField(max_length=500, null=True)

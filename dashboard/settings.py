@@ -110,8 +110,8 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
-LOGIN_REDIRECT_URL = '/index/update'
-LOGOUT_REDIRECT_URL = '/index' 
+LOGIN_REDIRECT_URL = '/chemian/update'
+LOGOUT_REDIRECT_URL = '/chemian/accounts/login' 
 
 
 

@@ -1,7 +1,8 @@
 from django.shortcuts import render
+from django.contrib.auth.decorators import login_required
 from dashboard.settings import EMAIL_HOST_USER
 from django.core.mail import send_mail
-from .models import Title, About,Service, Doctor, Doctor
+from .models import Title, About,Service, Doctor, Doctor, P_Appointment
 
 # def login(request):
 #     return render(request,'login.html')
@@ -22,7 +23,15 @@ def index(request):
     }
     return render(request,'index.html', context)
 
-def mails(request):
+def book_consultation(request):
+        # if request.method == 'POST':
+    # full_name = request.POST.get('full_name')
+    # email = request.POST.get('email')
+    # title = request.POST.get('title')
+    # details = request.POST.get('details')
+    
+    # appt = Online_appointments(full_name=full_name,email=email,title=title,details=details)
+    # appt.save()
     # if request.method == 'POST':
     subject = "welcome to emails"
     message = "Testing This Email"
@@ -34,12 +43,21 @@ def mails(request):
                 fail_silently= False)
         
     return render(request,'index.html')
-        
+@login_required(login_url='/accounts/login/')      
 def admin_page(request):
-    return render(request,'admin_index.html')
+    current_user = request.user
+    context = {
+        'current_user' : current_user
+    }
+    return render(request,'admin_index.html', context)
 
+@login_required(login_url='/accounts/login/') 
 def update(request):
-    return render(request,'updates.html')
+    current_user = request.user
+    context = {
+        'current_user' : current_user
+    }
+    return render(request,'updates.html', context)
 
 def add_main(request):
     if request.method == 'POST':
@@ -93,5 +111,18 @@ def doctors(request):
     
     else:
         return render(request, 'updates.html')
+    
+# Booking physical appointment  
+def physical_app(request):
+    if request.method == 'POST':
+        full_name = request.POST.get('full_name')
+        email = request.POST.get('email')
+        date = request.POST.get('date')
+        time = request.POST.get('time')
+        message =  request.POST.get('message')
         
-               
+        apt = P_Appointment(full_name=full_name,email=email,date=date,time=time,message=message)
+        apt.save()
+        return render(request, 'index.html')
+    else:
+        return render(request, 'index.html')
