@@ -122,3 +122,5 @@ LOGOUT_REDIRECT_URL = '/chemian/accounts/login'
 STATIC_URL = '/dash/static/'
 MEDIA_URL = '/images/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'images')
+DATE_INPUT_FORMATS = ['%d-%m-%Y']
+

@@ -1,5 +1,6 @@
 from django.db import models
 import datetime
+from dashboard import  settings
 
 
 class Title(models.Model):
@@ -8,7 +9,7 @@ class Title(models.Model):
     
     main_title = models.CharField(max_length=50)
     main_body = models.CharField(max_length=500)
-    main_image = models.ImageField(upload_to ='images', null=True)
+    main_image = models.ImageField(upload_to ='images', null=True, blank =True)
     
 class About(models.Model):
     def __str__(self):
@@ -30,12 +31,23 @@ class Doctor(models.Model):
 class P_Appointment(models.Model):
     full_name = models.CharField(max_length=50, null=True)
     email = models.CharField(max_length=50, null=True)
-    date = models.DateField(auto_now=True)
-    time = models.TimeField(auto_now=True)
+    date = models.DateField(null=False)
+    time = models.TimeField(null=False)
     message = models.CharField(max_length=50, null=True)
    
 class Online_appointments(models.Model):
     full_name = models.CharField(max_length=50, null=True)
     email = models.CharField(max_length=50, null=True)
     title = models.CharField(max_length=50, null=True)
-    details =models.CharField(max_length=500, null=True)
+    details = models.CharField(max_length=500, null=True)
+    image = models.ImageField(upload_to ="images", null=True)
+    
+class Service_image(models.Model):
+    service_image = models.ImageField(upload_to ='images', null=True, blank =True)
+    
+class Testimonial(models.Model):
+    name = models.CharField(max_length=50, null=True)
+    title = models.CharField(max_length=50, null=True)
+    testimonial = models.CharField(max_length=500, null=True)
+    photo = models.ImageField(upload_to ='images', null=True, blank =True)
+    

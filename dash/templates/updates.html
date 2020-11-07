@@ -138,15 +138,15 @@
                     </div>
                     <div class="card-body">
                       <label for="exampleFormControlTextarea1">Title</label>
-                      <input class="form-control" type="text" name="main_title" placeholder="Enter Text ">
+                      <input class="form-control" required="true" type="text" name="main_title" placeholder="Enter Text ">
                       <label for="exampleFormControlTextarea1">Body</label>
       
-                      <textarea name="main_body" class="form-control rounded-0" id="exampleFormControlTextarea1" rows="10"></textarea>
+                      <textarea name="main_body" required="true" class="form-control rounded-0" id="exampleFormControlTextarea1" rows="10"></textarea>
                       <div class="form-group">
                           <label for="exampleInputFile">Image Upload</label>
                           <div class="input-group">
                             <div class="custom-file">
-                              <input type="file" name="main_image" id="main_image"/>
+                              <input type="file" required="true" name="main_image" id="main_image"/>
                             </div>
                           </div>
                         </div>
@@ -169,18 +169,11 @@
                     </div>
                     <div class="card-body">
                       <label for="exampleFormControlTextarea1">Title</label>
-                      <input class="form-control" type="text" name="about_title" placeholder="Enter Title ">
+                      <input class="form-control" required="true" type="text" name="about_title" placeholder="Enter Title ">
                       <label for="exampleFormControlTextarea1">About</label>
       
-                      <textarea name="about_body" class="form-control rounded-0" id="exampleFormControlTextarea1" rows="10"></textarea>
-                      <div class="form-group">
-                          <label for="exampleInputFile">Upload Image</label>
-                          <div class="input-group">
-                            <div class="custom-file">
-                              <input type="file"  id="exampleInputFile">
-                            </div>
-                          </div>
-                        </div>
+                      <textarea name="about_body" required="true" class="form-control rounded-0" id="exampleFormControlTextarea1" rows="10"></textarea>
+        
                     </div>
                     <div class="card-footer">
                       <button type="submit" class="btn btn-primary">Submit</button>
@@ -201,11 +194,37 @@
                     </div>
                     <div class="card-body">
                       <label for="exampleFormControlTextarea1">Service Title</label>
-                      <input name="service_title" class="form-control" type="text" placeholder="Enter Text ">
+                      <input name="service_title" required="true" class="form-control" type="text" placeholder="Enter Text ">
                       <label for="exampleFormControlTextarea1">Service Description</label>
       
-                      <textarea name="service_description" class="form-control rounded-0" id="exampleFormControlTextarea1" rows="10"></textarea>
+                      <textarea name="service_description" required="true" class="form-control rounded-0" id="exampleFormControlTextarea1" rows="10"></textarea>
                   
+                    </div>
+                    <div class="card-footer">
+                      <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                  </div>
+            </form>
+
+          </div>
+          <div class="col-md-6">
+            <!-- Form Element sizes -->
+            <form  method="POST" action="add_service_image" enctype = "multipart/form-data">
+              {% csrf_token %}
+
+                <div class="card card-success">
+                    <div class="card-header">
+                      <h3 class="card-title">Services</h3>
+                    </div>
+                    <div class="card-body">
+                      <label for="exampleFormControlTextarea1">Add Main Service image</label>
+                      <div class="input-group">
+                        <div class="custom-file">
+                          <input type="file" required="true" name="service_image" id="service_image">
+                        </div>
+             
+                      </div>
+      
                     </div>
                     <div class="card-footer">
                       <button type="submit" class="btn btn-primary">Submit</button>
@@ -224,10 +243,10 @@
                     </div>
                     <div class="card-body">
                       <label for="exampleFormControlTextarea1">Doctor's Name</label>
-                      <input name="doctor_name" class="form-control" type="text" placeholder="Enter Doctor's Name ">
+                      <input name="doctor_name" required="true" class="form-control" type="text" placeholder="Enter Doctor's Name ">
 
                       <label for="doctor_specialization">Doctor's specialization</label>
-                      <input name="doctor_specialization" class="form-control" type="text" placeholder="Enter Doctor's Specialization ">
+                      <input name="doctor_specialization" required="true" class="form-control" type="text" placeholder="Enter Doctor's Specialization ">
 
                       <label for="exampleFormControlTextarea1">Doctor's Details</label>
       
@@ -236,7 +255,7 @@
                           <label for="exampleInputFile">Upload Photo</label>
                           <div class="input-group">
                             <div class="custom-file">
-                              <input type="file" name="doctor_photo" id="doctor-photo">
+                              <input type="file" required="true" name="doctor_photo" id="doctor-photo">
                             </div>
                  
                           </div>
@@ -251,17 +270,29 @@
           </div>
           <div class="col-md-6">
             <!-- Form Element sizes -->
-            <form>
+            <form method="POST" action="testimonial" enctype = "multipart/form-data">
+              {% csrf_token %}
+
                 <div class="card card-success">
                     <div class="card-header">
                       <h3 class="card-title">Testimonials</h3>
                     </div>
                     <div class="card-body">
-                      <label for="exampleFormControlTextarea1">Title</label>
-                      <input class="form-control" type="text" placeholder="Enter Text ">
-                      <label for="exampleFormControlTextarea1">About</label>
+                      <label for="exampleFormControlTextarea1">Person's Name</label>
+                      <input class="form-control" required="true" name="name" type="text" placeholder="Enter Name ">
+                      <label for="exampleFormControlTextarea1">Person's Tittle</label>
+                      <input class="form-control" required="true" name="title" type="text" placeholder="Enter Text ">
+                      <label for="exampleFormControlTextarea1">Testimonial</label>
       
-                      <textarea class="form-control rounded-0" id="exampleFormControlTextarea1" rows="10"></textarea>
+                      <textarea class="form-control rounded-0" name="testimonial"  id="exampleFormControlTextarea1" rows="10"></textarea>
+                      <div class="input-group">
+                        <label for="exampleFormControlTextarea1">Upload Person's Photo</label>
+                        <div class="custom-file">
+                          
+                          <input type="file" name="photo" required="true" name="doctor_photo" id="doctor-photo">
+                        </div>
+             
+                      </div>
                       
                     </div>
                     <div class="card-footer">

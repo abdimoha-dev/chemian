@@ -58,9 +58,25 @@
       </div>
     </div>
   </nav>  
-    <!-- END nav -->
+    <!-- END nav -->	     
+
     
+    {% if main_title.main_image %}
     
+    <div class="hero-wrap" style="background-image: url({{main_title.main_image.url}}); background-attachment:fixed;">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row no-gutters slider-text align-items-center justify-content-center" data-scrollax-parent="true">
+          <div class="col-md-8 ftco-animate text-center">
+            <h1 class="mb-4">{{main_title.main_title}}</h1> 
+            <!-- The most valuable thing is your Health -->
+            <p>{{main_title.main_body}}</p>
+            <!-- We care about your health Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life -->
+          </div>
+        </div>
+      </div>
+    </div>
+    {% else %}
     <div class="hero-wrap" style="background-image: url({% static 'images/bg_1.jpg'%}); background-attachment:fixed;">
       <div class="overlay"></div>
       <div class="container">
@@ -74,6 +90,7 @@
         </div>
       </div>
     </div>
+    {% endif %}
 
     <section class="ftco-services" id="about">
       <div class="container">
@@ -89,9 +106,7 @@
               <div class="row">
                 <div style="text-align: center;">
                   <h4>{{main_about.about_title}}</h4>
-                  <p>As a unique and innovative plan to offer healthcare solutions to our clients, Chemian Health Solutions has its operations 
-                    in Nairobi and its environs where we intend to bring healthcare services closer to our clients and in a way it suite their needs. We intend to offer online and physical medical consultations and treatment, home-based care and visits, offer laboratory services, and also help in linking our clients to referral laboratory services.
-                    We have qualified medical professionals who are dedicated to offering the best care service as per the need of our clients.</p>
+                  <p>{{main_about.about_body}}</p>
                 </div>
               </div>
             </div>
@@ -101,14 +116,13 @@
         </div>
       </div>
     </section>
-      <section class="ftco-services">
+      <section class="ftco-services" id="services">
         <div class="container">
           <div class="row no-gutters">
             <div class="col-md-4 ftco-animate py-5 nav-link-wrap fadeInUp ftco-animated">
               <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                 {% for service in services %}
-                <a class="nav-link px-4 {% if forloop.first%} active {% endif %} " id="v-pills-master-tab" data-toggle="pill" href="#v-pills-master" role="tab" aria-controls="v-pills-master" aria-selected="true"><span class="mr-3 flaticon-cardiogram"></span> {{service.service_title}}</a>
-                {% endfor %}
+                <a class="nav-link px-4  {% if forloop.counter == service.id %} active {% endif %} " id="{{service.service_title}}" data-toggle="pill" href="#v-pills-master" role="tab" aria-controls="v-pills-master" aria-selected="true"><span class="mr-3 flaticon-cardiogram"></span> {{service.service_title}}</a>
                 <!-- <a class="nav-link px-4" id="v-pills-buffet-tab" data-toggle="pill" href="#v-pills-buffet" role="tab" aria-controls="v-pills-buffet" aria-selected="false"><span class="mr-3 flaticon-neurology"></span> Neurology</a>
   
                 <a class="nav-link px-4" id="v-pills-fitness-tab" data-toggle="pill" href="#v-pills-fitness" role="tab" aria-controls="v-pills-fitness" aria-selected="false"><span class="mr-3 flaticon-stethoscope"></span> Diagnostic</a>
@@ -117,21 +131,21 @@
   
                 <a class="nav-link px-4" id="v-pills-sea-tab" data-toggle="pill" href="#v-pills-sea" role="tab" aria-controls="v-pills-sea" aria-selected="false"><span class="mr-3 flaticon-vision"></span> Ophthalmology</a>
   
-                <a class="nav-link px-4" id="v-pills-spa-tab" data-toggle="pill" href="#v-pills-spa" role="tab" aria-controls="v-pills-spa" aria-selected="false"><span class="mr-3 flaticon-ambulance"></span> Emergency</a>
-                 -->
+                <a class="nav-link px-4" id="v-pills-spa-tab" data-toggle="pill" href="#v-pills-spa" role="tab" aria-controls="v-pills-spa" aria-selected="false"><span class="mr-3 flaticon-ambulance"></span> Emergency</a> -->
+                {% endfor %}
               </div>
             </div>
             <div class="col-md-8 ftco-animate p-4 p-md-5 d-flex align-items-center fadeInUp ftco-animated">
               
               <div class="tab-content pl-md-5" id="v-pills-tabContent">
                 {% for service in services %}
-                <div class="tab-pane fade show active  py-5" id="v-pills-master" role="tabpanel" aria-labelledby="v-pills-master-tab">
+                <div class="tab-pane fade show active  py-5" id="v-pills-master" role="tabpanel" aria-labelledby="{{service.service_title}}">
 
                   <h2 class="mb-4">{{service.service_title}}</h2>
                   <p>{{service.service_description}}</p>     
                   <button type="button" class="btn btn-primary btn-md" data-toggle="modal" data-target="#modalBookNowLabel" id="myBtn">Book Online Appointment</button>
                   </div>
-                {% endfor %}
+                  {% endfor %}
   
                 <!-- <div class="tab-pane fade py-5" id="v-pills-buffet" role="tabpanel" aria-labelledby="v-pills-buffet-tab">
                   <h2 class="mb-4">Neurogoly Department</h2>
@@ -170,25 +184,27 @@
               </div>
             </div>
           </div>
-        </div>
+        </div>                                
       </section>
     
 
-    <section class="ftco-section-2 img" style="background-image: url({% static 'images/bg_3.jpg' %});" id="services">
+    <section class="ftco-section-2 img" {% if service_image.service_image%} style="background-image: url({{service_image.service_image.url}});"{% else %} style="background-image: url({% static 'images/bg_3.jpg' %});" {% endif%} id="services">
 	 <div class="container">
     		<div class="row d-md-flex justify-content-end">
     			<div class="col-md-3">
     				<div class="row">
     					<div class="col-md-12">
+                {% for service in services %}
     						<a href="#" class="services-wrap ftco-animate">
     							<div class="icon d-flex justify-content-center align-items-center">
     								<span class="ion-ios-arrow-back"></span>
     								<span class="ion-ios-arrow-forward"></span>
     							</div>
-    							<h2>Laboratory Services</h2>
-    							<p>Even the all-powerful Pointing has no control about the blind.</p>
-    						</a>
-    						<a href="#" class="services-wrap ftco-animate">
+    							<h2>{{service.service_title }}</h2>
+    							<p>{{service.service_description |slice:":50" }}</p>
+                </a>
+                {% endfor %}
+    						<!-- <a href="#" class="services-wrap ftco-animate">
     							<div class="icon d-flex justify-content-center align-items-center">
     								<span class="ion-ios-arrow-back"></span>
     								<span class="ion-ios-arrow-forward"></span>
@@ -211,7 +227,7 @@
     							</div>
     							<h2>24/7 Help &amp; Support</h2>
     							<p>Even the all-powerful Pointing has no control about the blind.</p>
-    						</a>
+    						</a> -->
     					</div>
     				</div>
     			</div>
@@ -219,6 +235,7 @@
     	</div> 
 
     </section>
+
      
     <section class="ftco-section">
     	<div class="container">
@@ -281,21 +298,23 @@
         <div class="row">
         	<div class="col-md-12 ftco-animate">
             <div class="carousel-testimony owl-carousel">
+              {% for test in testimonial%}
               <div class="item">
                 <div class="testimony-wrap text-center">
-                  <div class="user-img mb-5" style="background-image: url(images/person_1.jpg)">
+                  <div class="user-img mb-5" style="background-image: url({{test.photo.url}})">
                     <span class="quote d-flex align-items-center justify-content-center">
                       <i class="icon-quote-left"></i>
                     </span>
                   </div>
                   <div class="text">
                     <p class="mb-5">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
-                    <p class="name">Dennis Green</p>
-                    <span class="position">Patient</span>
+                    <p class="name">{{test.name}}</p>
+                    <span class="position">{{test.title}}</span>
                   </div>
                 </div>
               </div>
-              <div class="item">
+              {% endfor %}
+              <!-- <div class="item">
                 <div class="testimony-wrap text-center">
                   <div class="user-img mb-5" style="background-image: url(images/person_2.jpg)">
                     <span class="quote d-flex align-items-center justify-content-center">
@@ -336,7 +355,7 @@
                     <span class="position">Doctor</span>
                   </div>
                 </div>
-              </div>
+              </div> -->
             </div>
           </div>
         </div>
@@ -504,13 +523,13 @@
                 <div class="col-md-6">
                   <div class="form-group">
                     <label for="appointment_date" class="text-black">Date</label>
-                    <input type="text" name="date" class="form-control" id="appointment_date">
+                    <input type="text" name="date" required="true" class="form-control" id="appointment_date">
                   </div>    
                 </div>
                 <div class="col-md-6">
                   <div class="form-group">
                     <label for="appointment_time" class="text-black">Time</label>
-                    <input type="text" name="time" class="form-control" id="appointment_time">
+                    <input type="text" name="time" required="true" class="form-control" id="appointment_time">
                   </div>
                 </div>
               </div>
@@ -537,7 +556,7 @@
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="modalBookNowLabel">Book Consultation</h5>
+            <h5 class="modal-title" id="modalBookNowLabel">Book Consultation Online</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
@@ -563,14 +582,14 @@
                 <label for="appointment_message" class="text-black">Consultation Details</label>
                 <textarea name="details" id="appointment_message" class="form-control" cols="30" rows="10"></textarea>
               </div>
-              <!-- <div class="form-group">
+              <div class="form-group">
                 <label for="exampleInputFile">Upload Image</label>
                 <div class="input-group">
                   <div class="custom-file">
-                    <input type="file"  id="exampleInputFile">
+                    <input type="file" name="image"  id="exampleInputFile">
                   </div>
                 </div>
-              </div> -->
+              </div>
               <div class="form-group">
                 <input type="submit" id="sbtBtn" class="btn btn-primary">
               </div>

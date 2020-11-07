@@ -11,7 +11,9 @@ urlpatterns = [
     path('add_main_title', views.add_main, name = 'add_main_title'),
     path('add_about', views.add_about, name = 'add_about'),
     path('add_service', views.add_services, name = 'add_service'),
+    path('add_service_image', views.add_service_image, name = 'add_service_image'),
     path('doctors', views.doctors, name = 'doctors'),
-    path('physical_app', views.physical_app, name = 'physical_app')
+    path('physical_app', views.physical_app, name = 'physical_app'),
+    path('testimonial', views.testimonial, name = 'testimonial')
        
 ]
